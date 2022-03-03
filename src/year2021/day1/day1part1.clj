@@ -17,11 +17,14 @@
 
 (println num-list)
 
-(loop [[head & tail] num-list
+(loop [[head & tail] my-list
+       prev-value nil
        acc 0]
-  (println head)
-  (if (empty? tail)
-    (println acc)
-    (recur tail (inc acc))
-    )
+    (println "index:" index "val:" head)
+    (println "prev index:" (- index 1) "val at prev index:" (get my-list (- index 1)))
+    (if (< head (get my-list (- index 1)))
+      (recur tail (inc index) (inc acc))
+      (if (empty? tail)
+        (println "total acc:" acc)
+        (recur tail (inc index) acc)))
   )
