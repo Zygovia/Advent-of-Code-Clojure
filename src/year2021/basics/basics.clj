@@ -1,3 +1,6 @@
+;; alt + shift + L = send file to REPL
+;; alt + shift + P = send marked to REPL
+
 (if (= (+ 2 2) 4)
   (println "Maths works!")                                  ; this gets evaluated if 2 + 2 = 4
 

@@ -22,14 +22,24 @@
 
 (println num-list)
 
+;(println "index:" index "val:" head)
+;(println "prev index:" (- index 1) "val at prev index:" (get my-list (- index 1)))
+;(if (< head (get my-list (- index 1)))
+;  (recur tail (inc index) (inc acc))
+;  (if (empty? tail)
+;    (println "total acc:" acc)
+;    (recur tail (inc index) acc)))
+
 (loop [[head & tail] my-list
        prev-value nil
        acc 0]
-    (println "index:" index "val:" head)
-    (println "prev index:" (- index 1) "val at prev index:" (get my-list (- index 1)))
-    (if (< head (get my-list (- index 1)))
-      (recur tail (inc index) (inc acc))
-      (if (empty? tail)
-        (println "total acc:" acc)
-        (recur tail (inc index) acc)))
+  (if (empty? tail)
+    (println "total acc:" acc))
+  (if (nil? prev-value)
+    (recur tail head acc)
+    (if (< head prev-value)
+      (recur tail head (inc acc))
+      (recur tail head acc)
+      )
+    )
   )
