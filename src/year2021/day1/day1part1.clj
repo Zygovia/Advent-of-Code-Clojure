@@ -22,24 +22,41 @@
 
 (println num-list)
 
-;(println "index:" index "val:" head)
-;(println "prev index:" (- index 1) "val at prev index:" (get my-list (- index 1)))
-;(if (< head (get my-list (- index 1)))
-;  (recur tail (inc index) (inc acc))
-;  (if (empty? tail)
-;    (println "total acc:" acc)
-;    (recur tail (inc index) acc)))
-
-(loop [[head & tail] my-list
+(loop [[head & tail] num-list
        prev-value nil
        acc 0]
-  (if (empty? tail)
-    (println "total acc:" acc))
-  (if (nil? prev-value)
-    (recur tail head acc)
-    (if (< head prev-value)
-      (recur tail head (inc acc))
+  (if (nil? head)
+    (println "total acc:" acc)
+    (if (nil? prev-value)
       (recur tail head acc)
+      (if (> head prev-value)
+       (recur tail head (inc acc))
+       (recur tail head acc)
       )
     )
-  )
+  ))
+
+;; till del 2: ta delta, så för 1 2 3 4 5 6 så vill du droppa deltat och jämföra:
+;; 1 2 3 4 5 6 7 8
+;; 4 5 6 7
+
+(def delta-list (drop 3 num-list))
+(println delta-list)
+
+
+;(loop [[head & tail] num-list
+;       prev-value nil
+;       acc 0]
+;  (let [compare-with-this-number nil]
+;  (if (nil? compare-with-this-number)
+;    (println "total acc:" acc)
+;
+;    (if (nil? prev-value)
+;      (recur tail head acc)
+;
+;      (if (> compare-with-this-number prev-value)
+;        (recur tail head (inc acc))
+;        (recur tail head acc)
+;        )
+;      )
+;    )))
