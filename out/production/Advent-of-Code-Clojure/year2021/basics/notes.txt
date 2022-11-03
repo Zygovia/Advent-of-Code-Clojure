@@ -1,0 +1,9 @@
+Alt + Shift + L (ladda hela filen till repl)
+Alt + Shift + P (ladda markerad rad till repl)
+
+Alla funktioner returnerar något (void finns ej)
+
+or: returnerar första truthy el sista falsy
+and: returnerar sista truthy el första falsy
+
+Sista raden är det som returneras. Om man vill skriva mer än en rad krävs ett do-block.

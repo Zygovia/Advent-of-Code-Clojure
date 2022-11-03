@@ -2,16 +2,16 @@
 ;; alt + shift + P = send marked to REPL
 
 (if (= (+ 2 2) 4)
-  (println "Maths works!")                                  ; this gets evaluated if 2 + 2 = 4
+  (println "Maths works!") ; this gets evaluated if 2 + 2 = 4
 
   (println "UH OH")
 
-  )                                        ; this gets evaluated if 2 + 2 != 4
+  ) ; this gets evaluated if 2 + 2 != 4
 ; => Maths works!
 ;    nil
 
 (if (= (+ 2 2) 4)
-  (do                                                       ; all of this gets evaluated if 2 + 2 = 4
+  (do ; all of this gets evaluated if 2 + 2 = 4
     (println "Maths works!")
     (println "Maths still works!")
     4)
