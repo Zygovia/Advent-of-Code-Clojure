@@ -9,19 +9,25 @@
 
 (def my-list (get-lines input))
 
-(loop [[head & tail] my-list
-       x-pos 0
-       y-pos 0
-       ]
-  (->> (str/split head " ")
-       (cond identity
-             "forward"
-             (recur tail (inc x-pos) y-pos)
-             "up"
-             (recur tail x-pos (inc y-pos))
-             "down"
-             (recur tail x-pos (dec y-pos))
 
-             )
-       )
+; att tänka på, ist för x-pos och y-pos heter de horizontal och depth.
+; ointuitivt så är up - och down +
+(loop [[head & tail] my-list
+       horizontal 0
+       depth 0]
+  (if head
+    ; skulle kunna deconstruct:a head-splitted
+    (let [head-splitted (str/split head #" ")
+          number (read-string (last head-splitted))]
+      (condp = (first head-splitted)
+        "forward"
+        (recur tail (+ horizontal number) depth)
+        "up"
+        (recur tail horizontal (- depth number))
+        "down"
+        (recur tail horizontal (+ depth number))
+        )
+      )
+    (println "horizontal" horizontal ", depth" depth ", SVAR: " (* horizontal depth))
+    )
   )
